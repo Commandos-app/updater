@@ -1,6 +1,6 @@
 # Deno Updater Proxy
 
-[![Deploy](https://deno.com/deno-deploy-button.svg)](https://dash.deno.com/new?url=https://raw.githubusercontent.com/lemarier/updater-deno/main/main.ts&env=GITHUB_ACCOUNT,GITHUB_REPO,GITHUB_TOKEN)
+[![Deploy](https://deno.com/deno-deploy-button.svg)](https://dash.deno.com/new?url=https://raw.githubusercontent.com/Commandos-app/updater/main/main.ts&env=GITHUB_ACCOUNT,GITHUB_REPO,GITHUB_TOKEN)
 
 Sample PoC for Tauri updater using deno deploy or cloudflare workers.
 
@@ -30,7 +30,7 @@ Sample deno deploy URL: `https://cool-goose-79.deno.dev/`
 
 ## Github releases
 
-The update proxy will [automatically find](https://github.com/lemarier/updater-deno/blob/main/providers/github.ts#L90-L129) the right update archive for the right platform but the assets name should contains these keywords:
+The update proxy will [automatically find](https://github.com/Commandos-app/updater/blob/main/providers/github.ts#L90-L129) the right update archive for the right platform but the assets name should contains these keywords:
 
 | Platform | Keywords              | Extension |
 | -------- | --------------------- | --------- |
