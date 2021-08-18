@@ -1,21 +1,32 @@
 import { router } from "./deps.ts";
 import { notFound } from "./util/response.ts";
-import { loadProvider } from "./util/provider.ts";
+import { githubProvider } from "./providers/github.ts";
+import { indexProvider } from "./providers/index.ts";
 
-addEventListener("fetch", (event: FetchEvent) => {
+
+function defaultOtherHandler(_req: Request): Response {
+    return new Response(null, { status: 404, });
+}
+
+
+const handler = (event: FetchEvent) => {
     try {
-        const provider = loadProvider();
 
-        event.respondWith(
-            router(
-                { "/:platform/:version": provider, },
-                (_req) => { return notFound(); }
-            )(event.request)
-        );
+        const route = router(
+            {
+                "/": indexProvider,
+                "/:platform/:version": githubProvider,
+            },
+            defaultOtherHandler
+        )(event.request);
 
+        event.respondWith(route);
     } catch (error) {
         console.log(error);
         event.respondWith(notFound());
         return;
     }
-});
+}
+
+addEventListener("fetch", handler);
+

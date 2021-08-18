@@ -17,7 +17,7 @@ enviornment variables are:
 Once the enviornment variables are set you can start it locally using:
 
 ```bash
-> GITHUB_ACCOUNT=Commandos-app GITHUB_REPO=updater deployctl run --watch ./main.ts
+> deployctl run --watch --env=.env ./main.ts
 ```
 
 ## Endpoints
