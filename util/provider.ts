@@ -5,18 +5,18 @@ import { MatchHandler } from "../deps.ts";
 import GithubProvider from "../providers/github.ts";
 
 export enum AVAILABLE_PROVIDERS {
-  Github = "github",
+    Github = "github",
 }
 
 function loadProvider(): MatchHandler {
-  switch (PROVIDER) {
-    case AVAILABLE_PROVIDERS.Github:
-      return GithubProvider;
+    switch (PROVIDER) {
+        case AVAILABLE_PROVIDERS.Github:
+            return GithubProvider;
 
-    // return github as default provider
-    default:
-      return GithubProvider;
-  }
+        // return github as default provider
+        default:
+            return GithubProvider;
+    }
 }
 
 export { loadProvider };
