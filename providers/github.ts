@@ -1,17 +1,12 @@
 import { Match, SemverValid, SemverGT } from "../deps.ts";
 import { json, notFound, noUpdateAvailable } from "../util/response.ts";
 import { validatePlatform, AVAILABLE_PLATFORMS } from "../util/platform.ts";
-import {
-    GITHUB_TOKEN,
-    GITHUB_ACCOUNT,
-    GITHUB_REPO,
-    DEBUG_MODE
-} from "../util/constants.ts";
+import { GITHUB_TOKEN, GITHUB_ACCOUNT, GITHUB_REPO, DEBUG_MODE } from "../util/constants.ts";
 
 export default async function (req: Request, match: Match): Promise<Response> {
     const { platform, version } = match.params;
-    if (DEBUG_MODE) console.log(`TCL: ~ file: github.ts ~ line 12 ~ version:`, version);
-    if (DEBUG_MODE) console.log(`TCL: ~ file: github.ts ~ line 12 ~ platform:`, platform);
+    if (DEBUG_MODE) console.log(`TCL: ~ file: github.ts ~ line 7 ~ version:`, version);
+    if (DEBUG_MODE) console.log(`TCL: ~ file: github.ts ~ line 7 ~ platform:`, platform);
 
     // Make sure the platform is valid
     if (!platform || !validatePlatform(platform)) {
@@ -41,14 +36,14 @@ export default async function (req: Request, match: Match): Promise<Response> {
     try {
         // Get JSON from github
 
-        if (DEBUG_MODE) console.log(`TCL: ~ file: github.ts ~ line 44 ~ reqUrl.toString()`, reqUrl.toString());
+        if (DEBUG_MODE) console.log(`TCL: ~ file: github.ts ~ line 41 ~ reqUrl.toString()`, reqUrl.toString());
 
         const respons = await fetch(reqUrl.toString(), { method: "GET", headers });
         const release = await respons.json();
 
         if (DEBUG_MODE) console.log(release);
         if (DEBUG_MODE) console.log(release.tag_name);
-        if (DEBUG_MODE) console.log(`TCL: ~ file: github.ts ~ line 52 ~ release`, release);
+        if (DEBUG_MODE) console.log(`TCL: ~ file: github.ts ~ line 49 ~ release`, release);
 
         // Sanitize our version
         const remoteVersion = sanitizeVersion(release.tag_name.toLowerCase());
