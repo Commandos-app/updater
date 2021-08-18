@@ -10,16 +10,18 @@ import {
 
 export default async function (req: Request, match: Match): Promise<Response> {
     const { platform, version } = match.params;
-    console.log(`TCL: ~ file: github.ts ~ line 12 ~ version`, version);
-    console.log(`TCL: ~ file: github.ts ~ line 12 ~ platform`, platform);
+    if (DEBUG_MODE) console.log(`TCL: ~ file: github.ts ~ line 12 ~ version:`, version);
+    if (DEBUG_MODE) console.log(`TCL: ~ file: github.ts ~ line 12 ~ platform:`, platform);
 
     // Make sure the platform is valid
     if (!platform || !validatePlatform(platform)) {
+        if (DEBUG_MODE) console.warn(`not valid pflatform:`, version);
         return notFound();
     }
 
     // Make sure our version is semver valid
     if (!version || !SemverValid(version)) {
+        if (DEBUG_MODE) console.warn(`not valid version:`, version);
         return notFound();
     }
 
