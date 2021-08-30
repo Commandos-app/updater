@@ -1,7 +1,12 @@
 import { Status } from "../deps.ts";
 
 export function notFound(): Response {
-    return new Response("Not found", { status: Status.NotFound });
+    return new Response("{}", {
+        status: Status.NotFound,
+        headers: {
+            "Content-Type": "application/json; charset=utf-8"
+        }
+    });
 }
 export function noUpdateAvailable(): Response {
     return new Response("{}",
