@@ -67,7 +67,7 @@ export async function githubProvider(req: Request, match: Match): Promise<Respon
         // return notFound();
     }
 
-    return notFound();
+    return noUpdateAvailable();
 }
 
 function checkPlatform(platform: string, fileName: string) {
